@@ -42,17 +42,17 @@ var apimResourceGroupName = 'rg-apim-${resourceSuffix}'
 var apimName = 'apim-${resourceSuffix}'
 var appGatewayName = 'appgw-${resourceSuffix}'
 
-resource networkingRG 'Microsoft.Resources/resourceGroups@2021-04-01' = {
+resource networkingRG 'Microsoft.Resources/resourceGroups@2024-11-01' = {
   name: networkingResourceGroupName
   location: location
 }
 
-resource sharedRG 'Microsoft.Resources/resourceGroups@2021-04-01' = {
+resource sharedRG 'Microsoft.Resources/resourceGroups@2024-11-01' = {
   name: sharedResourceGroupName
   location: location
 }
 
-resource apimRG 'Microsoft.Resources/resourceGroups@2021-04-01' = {
+resource apimRG 'Microsoft.Resources/resourceGroups@2024-11-01' = {
   name: apimResourceGroupName
   location: location
 }
@@ -130,7 +130,7 @@ module appgwModule 'gateway/appgw.bicep' = {
 
 @description('Microsoft telemetry deployment.')
 #disable-next-line no-deployments-resources
-resource telemetrydeployment 'Microsoft.Resources/deployments@2021-04-01' = if (enableTelemetry) {
+resource telemetrydeployment 'Microsoft.Resources/deployments@2024-11-01' = if (enableTelemetry) {
   location: location
   name: telemetryId
   properties: {

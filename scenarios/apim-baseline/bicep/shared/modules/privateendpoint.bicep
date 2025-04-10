@@ -8,7 +8,7 @@ param serviceResourceId string
 param createDnsZone bool = true
 param domain string
 
-resource privateEndpoint 'Microsoft.Network/privateEndpoints@2021-03-01' = {
+resource privateEndpoint 'Microsoft.Network/privateEndpoints@2024-05-01' = {
   name: privateEndpointName
   location: location
   properties: {
@@ -41,14 +41,14 @@ module dnsZoneNew './dnszone.bicep' = if (createDnsZone == true) {
   ]
 }
 
-resource dnsZone 'Microsoft.Network/privateDnsZones@2018-09-01' existing = if (createDnsZone == false) {
+resource dnsZone 'Microsoft.Network/privateDnsZones@2024-06-01' existing = if (createDnsZone == false) {
   name: domain 
 }
 
 var dnsZoneName = (createDnsZone == true) ? dnsZoneNew.outputs.dnsZoneName : dnsZone.name
 var dnsZoneId = (createDnsZone == true) ? dnsZoneNew.outputs.dnsZoneId : dnsZone.id
 
-resource dnsZoneGroup 'Microsoft.Network/privateEndpoints/privateDnsZoneGroups@2020-03-01' = {
+resource dnsZoneGroup 'Microsoft.Network/privateEndpoints/privateDnsZoneGroups@2024-05-01' = {
   name: 'default'
   parent: privateEndpoint
   properties: {
