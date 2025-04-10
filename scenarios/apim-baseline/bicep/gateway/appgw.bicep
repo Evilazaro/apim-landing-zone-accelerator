@@ -36,7 +36,7 @@ param certData string
 var appGatewayIdentityId = 'identity-${appGatewayName}'
 var appGatewayFirewallPolicy = 'waf-${appGatewayName}'
 
-resource appGatewayIdentity 'Microsoft.ManagedIdentity/userAssignedIdentities@2025-01-31-preview' = {
+resource appGatewayIdentity 'Microsoft.ManagedIdentity/userAssignedIdentities@2024-11-30' = {
   name: appGatewayIdentityId
   location: location
 }

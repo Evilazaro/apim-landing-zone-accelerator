@@ -15,7 +15,7 @@ var subjectName='CN=${appGatewayFQDN}'
 var certPwd = appGatewayCertType == 'selfsigned' ? 'null' : certKey
 var certDataString = appGatewayCertType == 'selfsigned' ? 'null' : certData
 
-resource deploymentIdentity 'Microsoft.ManagedIdentity/userAssignedIdentities@2025-01-31-preview' existing = {
+resource deploymentIdentity 'Microsoft.ManagedIdentity/userAssignedIdentities@2024-11-30' existing = {
   name: deploymentIdentityName
 }
 

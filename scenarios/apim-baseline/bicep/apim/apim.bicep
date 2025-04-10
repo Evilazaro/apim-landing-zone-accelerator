@@ -45,7 +45,7 @@ var echoSubscriptionKey = guid('echoPrimaryKey')
 
 var apimIdentityName = 'identity-${apimName}'
 
-resource apimIdentity 'Microsoft.ManagedIdentity/userAssignedIdentities@2025-01-31-preview' = {
+resource apimIdentity 'Microsoft.ManagedIdentity/userAssignedIdentities@2024-11-30' = {
   name: apimIdentityName
   location: location
 }
