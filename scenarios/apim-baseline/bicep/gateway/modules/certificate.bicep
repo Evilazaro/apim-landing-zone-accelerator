@@ -15,11 +15,11 @@ var subjectName='CN=${appGatewayFQDN}'
 var certPwd = appGatewayCertType == 'selfsigned' ? 'null' : certKey
 var certDataString = appGatewayCertType == 'selfsigned' ? 'null' : certData
 
-resource deploymentIdentity 'Microsoft.ManagedIdentity/userAssignedIdentities@2018-11-30' existing = {
+resource deploymentIdentity 'Microsoft.ManagedIdentity/userAssignedIdentities@2025-01-31-preview' existing = {
   name: deploymentIdentityName
 }
 
-resource accessPolicyGrantForCertificate 'Microsoft.KeyVault/vaults/accessPolicies@2019-09-01' = {
+resource accessPolicyGrantForCertificate 'Microsoft.KeyVault/vaults/accessPolicies@2024-12-01-preview' = {
   name: '${keyVaultName}/add'
   properties: {
     accessPolicies: [
