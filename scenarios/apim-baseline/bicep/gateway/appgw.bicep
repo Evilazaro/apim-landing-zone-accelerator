@@ -36,7 +36,7 @@ param certData string
 var appGatewayIdentityId = 'identity-${appGatewayName}'
 var appGatewayFirewallPolicy = 'waf-${appGatewayName}'
 
-resource appGatewayIdentity 'Microsoft.ManagedIdentity/userAssignedIdentities@2018-11-30' = {
+resource appGatewayIdentity 'Microsoft.ManagedIdentity/userAssignedIdentities@2024-11-30' = {
   name: appGatewayIdentityId
   location: location
 }
@@ -58,11 +58,11 @@ module certificate './modules/certificate.bicep' = {
   }
 }
 
-resource appGatewayPublicIPAddress 'Microsoft.Network/publicIPAddresses@2019-09-01' existing = {
+resource appGatewayPublicIPAddress 'Microsoft.Network/publicIPAddresses@2024-05-01' existing = {
   name: appGatewayPublicIpName
 }
 
-resource appgw_waf_Pol 'Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies@2021-08-01' = {
+resource appgw_waf_Pol 'Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies@2024-05-01' = {
   name: appGatewayFirewallPolicy
   location: location
   properties: {
@@ -84,7 +84,7 @@ resource appgw_waf_Pol 'Microsoft.Network/ApplicationGatewayWebApplicationFirewa
   }
 }
 
-resource appGatewayName_resource 'Microsoft.Network/applicationGateways@2019-09-01' = {
+resource appGatewayName_resource 'Microsoft.Network/applicationGateways@2024-05-01' = {
   name: appGatewayName
   location: location
   dependsOn: [

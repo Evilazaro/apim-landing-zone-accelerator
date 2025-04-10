@@ -344,3 +344,4 @@ scenarios/apim-baseline/bicep/parameters.json
 *.http
 
 *-backend.hcl
+.azure

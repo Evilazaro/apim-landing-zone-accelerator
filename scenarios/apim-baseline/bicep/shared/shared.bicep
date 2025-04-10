@@ -43,7 +43,7 @@ module appInsights './modules/azmon.bicep' = {
   }
 }
 
-resource key_vault 'Microsoft.KeyVault/vaults@2023-07-01' = {
+resource key_vault 'Microsoft.KeyVault/vaults@2024-12-01-preview' = {
   name: keyVaultName
   location: location
   properties: {

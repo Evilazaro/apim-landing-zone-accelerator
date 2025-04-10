@@ -29,7 +29,7 @@ var deploymentSubnetName = 'snet-deploy-${resourceSuffix}'
 var appGatewayPublicIpName = 'pip-appgw-${resourceSuffix}'
 
 // Resources - VNet - SubNets
-resource vnetApimCs 'Microsoft.Network/virtualNetworks@2021-02-01' = {
+resource vnetApimCs 'Microsoft.Network/virtualNetworks@2024-05-01' = {
   name: apimCSVNetName
   location: location
   tags: {
@@ -97,7 +97,7 @@ resource vnetApimCs 'Microsoft.Network/virtualNetworks@2021-02-01' = {
 
 // Network Security Groups (NSG)
 
-resource appGatewayNSG 'Microsoft.Network/networkSecurityGroups@2020-06-01' = {
+resource appGatewayNSG 'Microsoft.Network/networkSecurityGroups@2024-05-01' = {
   name: appGatewaySNNSG
   location: location
   properties: {
@@ -158,7 +158,7 @@ resource appGatewayNSG 'Microsoft.Network/networkSecurityGroups@2020-06-01' = {
   }
 }
 
-resource apimNSG 'Microsoft.Network/networkSecurityGroups@2020-06-01' = {
+resource apimNSG 'Microsoft.Network/networkSecurityGroups@2024-05-01' = {
   name: apimSNNSG
   location: location
   properties: {
@@ -258,7 +258,7 @@ resource apimNSG 'Microsoft.Network/networkSecurityGroups@2020-06-01' = {
   }
 }
 
-resource privateEndpointNSG 'Microsoft.Network/networkSecurityGroups@2020-06-01' = {
+resource privateEndpointNSG 'Microsoft.Network/networkSecurityGroups@2024-05-01' = {
   name: privateEndpointSNNSG
   location: location
   properties: {
@@ -267,7 +267,7 @@ resource privateEndpointNSG 'Microsoft.Network/networkSecurityGroups@2020-06-01'
 }
 
 // Public IP 
-resource pipAppGw 'Microsoft.Network/publicIPAddresses@2023-04-01' = {
+resource pipAppGw 'Microsoft.Network/publicIPAddresses@2024-05-01' = {
   name: appGatewayPublicIpName
   location: location
   sku: {

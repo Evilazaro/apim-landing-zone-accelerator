@@ -57,7 +57,7 @@ resource apimRG 'Microsoft.Resources/resourceGroups@2024-11-01' = {
   location: location
 }
 
-module networking './networking/networking.bicep' = {
+module networking '../scenarios/apim-baseline/bicep/networking/networking.bicep' = {
   name: 'networkingresources'
   scope: resourceGroup(networkingRG.name)
   params: {
@@ -66,7 +66,7 @@ module networking './networking/networking.bicep' = {
   }
 }
 
-module shared './shared/shared.bicep' = {
+module shared '../scenarios/apim-baseline/bicep/shared/shared.bicep' = {
   dependsOn: [
     networking
   ]
@@ -86,7 +86,7 @@ module shared './shared/shared.bicep' = {
   }
 }
 
-module apimModule 'apim/apim.bicep' = {
+module apimModule '../scenarios/apim-baseline/bicep/apim/apim.bicep' = {
   name: 'apimDeploy'
   scope: resourceGroup(apimRG.name)
   params: {
@@ -104,7 +104,7 @@ module apimModule 'apim/apim.bicep' = {
   }
 }
 
-module appgwModule 'gateway/appgw.bicep' = {
+module appgwModule '../scenarios/apim-baseline/bicep/gateway/appgw.bicep' = {
   name: 'appgwDeploy'
   scope: resourceGroup(networkingRG.name)
   dependsOn: [

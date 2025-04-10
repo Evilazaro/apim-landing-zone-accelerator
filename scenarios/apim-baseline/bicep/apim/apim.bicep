@@ -45,12 +45,12 @@ var echoSubscriptionKey = guid('echoPrimaryKey')
 
 var apimIdentityName = 'identity-${apimName}'
 
-resource apimIdentity 'Microsoft.ManagedIdentity/userAssignedIdentities@2018-11-30' = {
+resource apimIdentity 'Microsoft.ManagedIdentity/userAssignedIdentities@2024-11-30' = {
   name: apimIdentityName
   location: location
 }
 
-resource apimName_resource 'Microsoft.ApiManagement/service@2020-12-01' = {
+resource apimName_resource 'Microsoft.ApiManagement/service@2024-06-01-preview' = {
   name: apimName
   location: location
   sku:{
@@ -76,7 +76,7 @@ resource apimName_resource 'Microsoft.ApiManagement/service@2020-12-01' = {
   }
 }
 
-resource echoSubscription 'Microsoft.ApiManagement/service/subscriptions@2020-12-01' = {
+resource echoSubscription 'Microsoft.ApiManagement/service/subscriptions@2024-06-01-preview' = {
   parent: apimName_resource
   name: 'Echo'
   properties: {
@@ -86,7 +86,7 @@ resource echoSubscription 'Microsoft.ApiManagement/service/subscriptions@2020-12
   }
 }
 
-resource apimName_appInsightsLogger_resource 'Microsoft.ApiManagement/service/loggers@2021-08-01' = {
+resource apimName_appInsightsLogger_resource 'Microsoft.ApiManagement/service/loggers@2024-06-01-preview' = {
   parent: apimName_resource
   name: appInsightsName
   properties: {
@@ -98,7 +98,7 @@ resource apimName_appInsightsLogger_resource 'Microsoft.ApiManagement/service/lo
   }
 }
 
-resource apimName_applicationinsights 'Microsoft.ApiManagement/service/diagnostics@2021-08-01' = {
+resource apimName_applicationinsights 'Microsoft.ApiManagement/service/diagnostics@2024-06-01-preview' = {
   parent: apimName_resource
   name: 'applicationinsights'
   properties: {
