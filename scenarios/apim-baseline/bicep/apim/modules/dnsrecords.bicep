@@ -5,7 +5,7 @@ param apimName                  string
 param apimRG                    string
 
 
-resource apim 'Microsoft.ApiManagement/service@2020-12-01' existing = {
+resource apim 'Microsoft.ApiManagement/service@2024-06-01-preview' existing = {
   name: apimName
   scope: resourceGroup(apimRG)
 }
@@ -19,12 +19,12 @@ module dnsZone '../../shared/modules/dnszone.bicep' = {
   }
 }
 
-resource apimDnsZone 'Microsoft.Network/privateDnsZones@2020-06-01' existing = {
+resource apimDnsZone 'Microsoft.Network/privateDnsZones@2024-06-01' existing = {
   name: '${apimName}.azure-api.net'
 }
 
 
-resource gatewayRecord 'Microsoft.Network/privateDnsZones/A@2020-06-01' = {
+resource gatewayRecord 'Microsoft.Network/privateDnsZones/A@2024-06-01' = {
   parent: apimDnsZone
   name: '@'
   dependsOn: [
@@ -41,7 +41,7 @@ resource gatewayRecord 'Microsoft.Network/privateDnsZones/A@2020-06-01' = {
   }
 }
 
-resource developerRecord 'Microsoft.Network/privateDnsZones/A@2020-06-01' = {
+resource developerRecord 'Microsoft.Network/privateDnsZones/A@2024-06-01' = {
   parent: apimDnsZone
   name: 'developer'
   dependsOn: [
